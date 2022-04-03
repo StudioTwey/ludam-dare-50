@@ -177,7 +177,7 @@ pause_mode = 2
 stream = ExtResource( 10 )
 volume_db = -7.068
 
-[node name="bg_music" type="AudioStreamPlayer2D" parent="."]
+[node name="bg_music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
 autoplay = true
 
