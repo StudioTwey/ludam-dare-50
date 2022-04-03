@@ -4,7 +4,7 @@ onready var tween = $Tween
 
 var tween_values = []
 
-var speed: float = rand_range(40,80) * Globals.global_difficulty_modifier
+export var speed: float = rand_range(40,80) 
 var velocity := Vector2.ZERO
 
 func _ready() -> void:
@@ -14,7 +14,7 @@ func _ready() -> void:
 #	_start_tween()
 
 func _process(delta: float) -> void:
-	velocity = speed * Vector2.RIGHT
+	velocity = (speed * Globals.global_difficulty_modifier) * Vector2.RIGHT
 	position += velocity * delta
 	if position.x > 330:
 		queue_free()

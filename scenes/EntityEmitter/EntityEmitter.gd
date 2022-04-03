@@ -25,6 +25,13 @@ func _on_Timer_timeout() -> void:
 
 func _on_TargetPlayer_timeout() -> void:
 	var entity_to_instance = Utils.choose_random_from_array(entity_array)
-	var spawn_range = Utils.choose_random_from_array(lanes)
 	var player_pos = Utils.get_player_pos()
 	Utils.add_instance_to_scene(entity_to_instance, Vector2(-10, player_pos.y), self)
+
+func _on_Game_trash_blast() -> void:
+	if target_player:
+		var entity_to_instance = Utils.choose_random_from_array(entity_array)
+		var spawn_range = Utils.choose_random_from_array(lanes)
+		var player_pos = Utils.get_player_pos()
+		var trash =  Utils.add_instance_to_scene(entity_to_instance, Vector2(-10, player_pos.y), self)
+		trash.speed = 400

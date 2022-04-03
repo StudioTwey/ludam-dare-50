@@ -14,10 +14,10 @@ func _ready() -> void:
 func _process(delta) -> void:
 	var velocity = Vector2.ZERO # The player's movement vector.
 	if Input.is_action_pressed("move_right"):
-		self.rotate(.1)
+		self.rotate(.08)
 #		velocity = rot_to_vector(rotation)
 	if Input.is_action_pressed("move_left"):
-		self.rotate(-.1)
+		self.rotate(-.08)
 #		velocity = rot_to_vector(rotation)
 	if Input.is_action_pressed("move_up"):
 		velocity = Vector2(-1,0).rotated(rotation)
@@ -37,7 +37,7 @@ func rot_to_vector(rot: float) -> Vector2:
 	
 	return direction
 
-
-func _on_Player_area_entered(area:Area2D) -> void:	
-	emit_signal('player_died')
-	queue_free()
+func _on_Player_area_entered(area:Area2D) -> void:
+	if area.name != 'TrashBlastZone':
+		emit_signal('player_died')
+		queue_free()

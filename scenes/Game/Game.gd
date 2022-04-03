@@ -1,11 +1,15 @@
 extends Node2D
 
+signal trash_blast
+
 onready var score_label = $UI/Control/ScoreText
 onready var timer_label = $UI/Control/TimerText
 onready var game_over_panel = $UI/Control/GameOverPanel
 onready var final_score_label = $UI/Control/GameOverPanel/FinalScore
 onready var final_time_label = $UI/Control/GameOverPanel/FinalTime
 onready var difficulty_timer = $DifficultyTimer
+onready var trash_blast_zone = $TrashBlastZone
+onready var trash_blast_timer = $TrashBlastTimer
 
 var time_elapsed := 0.0
 var final_time
@@ -49,3 +53,17 @@ func _on_ScoreTimer_timeout() -> void:
 	score_multiplier += .2
 	score += 10 * score_multiplier
 	score_label.text = 'Score: ' + str(score)
+
+
+func _on_TrashBlastZone_area_entered(area: Area2D) -> void:
+	if area.name == 'Player':
+		trash_blast_timer.start()
+
+
+func _on_TrashBlastZone_area_exited(area: Area2D) -> void:
+	if area.name == 'Player':
+		trash_blast_timer.stop()
+
+
+func _on_TrashBlastTimer_timeout() -> void:
+	emit_signal("trash_blast")

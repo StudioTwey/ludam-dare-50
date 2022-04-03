@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/Game/Game.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Player/Player.tscn" type="PackedScene" id=2]
@@ -9,6 +9,9 @@
 [ext_resource path="res://scenes/Entities/IPA.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/Entities/Hook.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/Game/Game.tres" type="Theme" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 160, 15 )
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -154,10 +157,24 @@ autostart = true
 wait_time = 5.0
 autostart = true
 
+[node name="TrashBlastZone" type="Area2D" parent="."]
+position = Vector2( 10, 292 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrashBlastZone"]
+position = Vector2( 150, 12 )
+shape = SubResource( 1 )
+
+[node name="TrashBlastTimer" type="Timer" parent="."]
+wait_time = 2.5
+
+[connection signal="trash_blast" from="." to="TrashEmitter" method="_on_Game_trash_blast"]
 [connection signal="pressed" from="UI/Control/GameOverPanel/PlayAgain" to="." method="_on_PlayAgain_pressed"]
 [connection signal="pressed" from="UI/Control/GameOverPanel/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="player_died" from="Player" to="." method="_on_Player_player_died"]
 [connection signal="timeout" from="DifficultyTimer" to="." method="_on_DifficultyTimer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
+[connection signal="area_entered" from="TrashBlastZone" to="." method="_on_TrashBlastZone_area_entered"]
+[connection signal="area_exited" from="TrashBlastZone" to="." method="_on_TrashBlastZone_area_exited"]
+[connection signal="timeout" from="TrashBlastTimer" to="." method="_on_TrashBlastTimer_timeout"]
 
 [editable path="HookEmitter"]
