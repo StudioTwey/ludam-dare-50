@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/Game/Game.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Player/Player.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://scenes/Entities/Hook.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/Game/Game.tres" type="Theme" id=9]
 [ext_resource path="res://assets/Audio Files/pufferfish-eating-a-carrot.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/Audio Files/bg_music.ogg" type="AudioStream" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 160, 15 )
@@ -38,6 +39,9 @@ __meta__ = {
 }
 
 [node name="ScoreText" type="Label" parent="UI/Control"]
+anchor_left = 0.0125
+anchor_right = 0.2375
+anchor_bottom = 0.075
 text = "Score: 0"
 valign = 1
 __meta__ = {
@@ -173,7 +177,10 @@ pause_mode = 2
 stream = ExtResource( 10 )
 volume_db = -7.068
 
-[connection signal="trash_blast" from="." to="TrashEmitter" method="_on_Game_trash_blast"]
+[node name="bg_music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 11 )
+autoplay = true
+
 [connection signal="pressed" from="UI/Control/GameOverPanel/PlayAgain" to="." method="_on_PlayAgain_pressed"]
 [connection signal="pressed" from="UI/Control/GameOverPanel/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="player_died" from="Player" to="." method="_on_Player_player_died"]
