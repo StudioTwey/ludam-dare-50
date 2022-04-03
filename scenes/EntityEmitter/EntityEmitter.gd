@@ -16,4 +16,4 @@ func _on_Timer_timeout() -> void:
 	var rand_coord = rand_range(spawn_range[0], spawn_range[1]) 
 	
 	var random_vector = Vector2(-10, rand_coord) if is_horizontal else Vector2(rand_coord, -10)
-	Utils.add_instance_to_scene(entity_to_instance, random_vector)
+	Utils.add_instance_to_scene(entity_to_instance, random_vector, self)

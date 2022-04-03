@@ -1,5 +1,7 @@
 extends Area2D
 
+signal player_died;
+
 onready var sprite = $Sprite
 onready var animation_player = $AnimationPlayer;
 
@@ -36,6 +38,6 @@ func rot_to_vector(rot: float) -> Vector2:
 	return direction
 
 
-func _on_Player_area_entered(area:Area2D) -> void:
-	print(area.name, ' killed you')
+func _on_Player_area_entered(area:Area2D) -> void:	
+	emit_signal('player_died')
 	queue_free()

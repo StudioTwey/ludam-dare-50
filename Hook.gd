@@ -39,4 +39,4 @@ func _on_Tween_tween_completed(object, key):
 
 func _on_Timer_timeout() -> void:
 	tween.stop(self)
-	speed = rand_range(-400, -80)
+	speed = rand_range(-400, -80) * Globals.global_difficulty_modifier
