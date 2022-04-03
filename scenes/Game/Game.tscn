@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/Game/Game.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Player/Player.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://scenes/Entities/Bag.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Entities/Rings.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/Entities/IPA.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Entities/Hook.tscn" type="PackedScene" id=8]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -23,3 +24,12 @@ position = Vector2( 158, 272 )
 
 [node name="TrashEmitter" parent="." instance=ExtResource( 4 )]
 entity_array = [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ]
+
+[node name="HookEmitter" parent="." instance=ExtResource( 4 )]
+entity_array = [ ExtResource( 8 ) ]
+is_horizontal = false
+
+[node name="Timer" parent="HookEmitter" index="0"]
+wait_time = 5.0
+
+[editable path="HookEmitter"]

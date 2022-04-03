@@ -34,3 +34,8 @@ func rot_to_vector(rot: float) -> Vector2:
 	var direction = Vector2(cos(rot), sin(rot))
 	
 	return direction
+
+
+func _on_Player_area_entered(area:Area2D) -> void:
+	print(area.name, ' killed you')
+	queue_free()
