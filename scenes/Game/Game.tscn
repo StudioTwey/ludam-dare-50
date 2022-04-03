@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/Game/Game.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Player/Player.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://scenes/Entities/IPA.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/Entities/Hook.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/Game/Game.tres" type="Theme" id=9]
+[ext_resource path="res://assets/Audio Files/pufferfish-eating-a-carrot.wav" type="AudioStream" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 160, 15 )
@@ -166,6 +167,11 @@ shape = SubResource( 1 )
 
 [node name="TrashBlastTimer" type="Timer" parent="."]
 wait_time = 2.5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 10 )
+volume_db = -7.068
 
 [connection signal="trash_blast" from="." to="TrashEmitter" method="_on_Game_trash_blast"]
 [connection signal="pressed" from="UI/Control/GameOverPanel/PlayAgain" to="." method="_on_PlayAgain_pressed"]

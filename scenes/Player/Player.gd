@@ -4,7 +4,7 @@ signal player_died;
 
 onready var sprite = $Sprite
 onready var animation_player = $AnimationPlayer;
-
+onready var audio = $AudioStreamPlayer
 export var speed: int = 100;
 var screen_size
 
@@ -41,3 +41,4 @@ func _on_Player_area_entered(area:Area2D) -> void:
 	if area.name != 'TrashBlastZone':
 		emit_signal('player_died')
 		queue_free()
+

@@ -39,6 +39,7 @@ func _on_Player_player_died() -> void:
 	game_over_panel.visible = true
 	final_time_label.text = 'Time: ' + str(final_time)
 	final_score_label.text = 'Score: ' + str(final_score)
+	SoundController.play_death_sound($AudioStreamPlayer)
 	get_tree().paused = true
 
 func _on_PlayAgain_pressed() -> void:

@@ -3,7 +3,7 @@
 [ext_resource path="res://scenes/Player/Player.gd" type="Script" id=3]
 [ext_resource path="res://assets/fish_sprite_sheet.png" type="Texture" id=5]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -18,7 +18,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "swim"
 length = 0.2
 loop = true
@@ -46,7 +46,7 @@ hframes = 2
 polygon = PoolVector2Array( -15, -1, -8, -5, 2, -5, 7, -3, 11, -7, 13, -6, 13, 5, 11, 6, 7, 2, 2, 4, -8, 4, -15, 0 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/RESET = SubResource( 2 )
-anims/swim = SubResource( 3 )
+anims/RESET = SubResource( 1 )
+anims/swim = SubResource( 2 )
 
 [connection signal="area_entered" from="." to="." method="_on_Player_area_entered"]
