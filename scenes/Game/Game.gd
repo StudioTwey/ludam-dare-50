@@ -11,6 +11,7 @@ var time_elapsed := 0.0
 var final_time
 var score = 0
 var final_score
+var score_multiplier = 1 
 
 func _ready() -> void:
 	get_tree().paused = false
@@ -19,10 +20,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	time_elapsed += delta
 	timer_label.text = format_time(time_elapsed)
-	# Revisit score calculation
-	score += floor((time_elapsed / 60) * Globals.global_difficulty_modifier) + 1
-	print(score)
-	score_label.text = 'Score: ' + str(score)
 
 func format_time(time: float) -> String:
 	var minutes := time / 60
@@ -46,3 +43,9 @@ func _on_PlayAgain_pressed() -> void:
 
 func _on_Quit_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_ScoreTimer_timeout() -> void:
+	score_multiplier += .2
+	score += 10 * score_multiplier
+	score_label.text = 'Score: ' + str(score)

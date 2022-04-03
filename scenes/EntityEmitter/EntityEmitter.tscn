@@ -8,4 +8,8 @@ script = ExtResource( 1 )
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
+[node name="TargetPlayer" type="Timer" parent="."]
+wait_time = 3.0
+
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="TargetPlayer" to="." method="_on_TargetPlayer_timeout"]

@@ -137,6 +137,7 @@ position = Vector2( 158, 272 )
 
 [node name="TrashEmitter" parent="." instance=ExtResource( 4 )]
 entity_array = [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ]
+target_player = true
 
 [node name="HookEmitter" parent="." instance=ExtResource( 4 )]
 entity_array = [ ExtResource( 8 ) ]
@@ -149,9 +150,14 @@ wait_time = 5.0
 wait_time = 15.0
 autostart = true
 
+[node name="ScoreTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
 [connection signal="pressed" from="UI/Control/GameOverPanel/PlayAgain" to="." method="_on_PlayAgain_pressed"]
 [connection signal="pressed" from="UI/Control/GameOverPanel/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="player_died" from="Player" to="." method="_on_Player_player_died"]
 [connection signal="timeout" from="DifficultyTimer" to="." method="_on_DifficultyTimer_timeout"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
 
 [editable path="HookEmitter"]
