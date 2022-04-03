@@ -8,6 +8,5 @@ func add_instance_to_scene(sceneToAdd, position, container = get_tree().current_
 	
 	return instance
 
-func rand_between_to_nums(randMin: int = 0, randMax: int = 100) -> int:
-	var rand = floor(rand_range(randMin, randMax))
-	return rand
+func choose_random_from_array(array: Array):
+	return array[randi() % array.size()]
