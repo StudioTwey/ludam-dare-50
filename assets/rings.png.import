@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Hook Sprite.png-aab6924739c2879689b779f057868c10.stex"
+path="res://.import/rings.png-65743eccacfe666af74bc28f3e3eb2dc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Hook Sprite.png"
-dest_files=[ "res://.import/Hook Sprite.png-aab6924739c2879689b779f057868c10.stex" ]
+source_file="res://assets/rings.png"
+dest_files=[ "res://.import/rings.png-65743eccacfe666af74bc28f3e3eb2dc.stex" ]
 
 [params]
 

@@ -1,6 +1,6 @@
 extends Node2D
 
-export var ENTITY_TO_SPAWN: PackedScene
+export(Array, PackedScene) var ENTITY_TO_SPAWN
 
 onready var timer = $Timer
 
